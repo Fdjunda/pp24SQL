@@ -17,4 +17,8 @@ create table kupac(
         lokacija varchar(50)
         vrijeme dostave datetime
     );
+
+    create table mjesto(
+        
+    )
     
