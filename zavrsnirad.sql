@@ -3,52 +3,73 @@ create database zavrsnirad;
 #ime app pri kraju rada
 use zavrsnirad --default_character_set=utf8;
 
-create table kupac(
-    sifra int not null primary key auto_increment,
-    ime varchar(20),
-    prezime varchar(20),
-    artikl varchar(50),
-    mjesto varchar(50),
-    ulica varchar(100),
-    kucni_broj varchar(7),
-    trgovina varchar(20),
-    artikl varchar(50));
-
-    create table dostavljac(
-        sifra int not null primary key auto_increment,
-        ime varchar(20),
-        kontakt varchar(20)
+create table kupci(
+    id int
+    ime varchar(50)
+    prezime varchar(50),    
+    email varchar(50),
+    kontakt_broj varchar(30),
+    adresa varchar(60),
+    pbroj char(5),
+    mjesto varchar(50)
     );
 
-    create table trgovina(
-        sifra int not null primary key auto_increment,
-        ime varchar(50),
-        mjesto varchar(100),
-        ulica varchar(100),
-        kucni_broj varchar(7),
-0       artikl varchar(50)
+    create table dostavljaci(
+    id int
+    naziv varchar(50),
+    kontakt_broj varchar(30),
+    mjesto varchar(50)
+    );
+
+    create table trgovine(
+    id int 
+    naziv varchar(50),
+    email varchar(50),
+    kontakt_broj varchar(50),
+    adresa varchar(50),
+    pbroj char(5),
+    mjesto varchar(50)
+    );
+
+    create table nacin_placanja(
+        id int,
+        naziv varchar(50)
+    );
+
+    create table artikli(
+    id int
+    naziv varchar(50),
+    opis text,
+    cijena decimal(18,2)
     );
         
-    create table narudzba(
-        sifra int not null primary key auto_increment,
-        naziv varchar(100) not null,
-        kolicina varchar(1000),
-        cijena decimal(18,2),
-        artikl varchar(100));
+    create table narudzbe(
+    id int,
+    kupac_id int,
+    trgovina_id int,
+    dostavljac_id int,
+    nacin_placanja_id int,
+    ukupan_iznos decimal(18,2),
+    placeno boolean);
 
-    create table artikl(
-        narudzba int not null,
-        kupac int not null,
-        trgovina int not null,
-        dostavljac int not null
+    create table (narudzbe_artikli
+    id int,
+    narudzba_id int,
+    artikli_id int,
+    cijena decimal(18,2),
+    kolicina varchar(1000)
     );
 
 
+    ALTER TABLE narudzbe ADD FOREIGN KEY (kupac_id) REFERENCES kupac(id);
+    ALTER TABLE narudzbe ADD FOREIGN KEY (trgovina_id) REFERENCES trgovina(trgovina_id);
+    ALTER TABLE narudzbe ADD FOREIGN KEY (dostavljac_id) REFERENCES dostavljac(id);
+    ALTER TABLE narudzbe ADD FOREIGN KEY (nacin_placanja_id) REFERENCES nacin_placanja(id);
+    ALTER TABLE narudzbe_artikli ADD FOREIGN KEY (narudzba_id) REFERENCES narudzbe(id);
+    ALTER TABLE narudzbe_artikli ADD FOREIGN KEY (artikli_id) REFERENCES artikli(id);
 
 
-    alter table narudzba add foreign key (artikl) references kupac(sifra);
-    alter table narudzba add foreign key (artikl) references dobavljac(sifra);
-
+    
 
 
     
