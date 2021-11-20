@@ -32,8 +32,8 @@ use zavrsnirad --default_character_set=utf8;
     );
 
     create table nacin_placanja(
-        id int not null primary key auto_increment,,
-        naziv varchar(50) not null
+    id int not null primary key auto_increment,
+    naziv varchar(50) not null
     );
 
     create table artikli(
@@ -44,32 +44,29 @@ use zavrsnirad --default_character_set=utf8;
     );
         
     create table narudzbe(
-    id int not null primary key auto_increment,,
-    kupac_id int not null primary key auto_increment,,
-    trgovina_id int not null primary key auto_increment,,
-    dostavljac_id int not null primary key auto_increment,,
-    nacin_placanja_id int not null primary key auto_increment,,
+    id int not null primary key auto_increment,
+    kupac_id int,
+    trgovina_id int,
+    dostavljac_id int,
+    nacin_placanja_id int,
     ukupan_iznos decimal(18,2),
     placeno boolean);
 
     create table narudzbe_artikli(
-    id int not null primary key auto_increment,,
-    narudzba_id int not null primary key auto_increment,,
-    artikli_id int not null primary key auto_increment,,
+    id int not null primary key auto_increment,
+    narudzba_id int,
+    artikli_id int,
     cijena decimal(18,2),
     kolicina varchar(1000)
     );
 
 
     ALTER TABLE narudzbe ADD FOREIGN KEY (kupac_id) REFERENCES kupac(id);
-    ALTER TABLE narudzbe ADD FOREIGN KEY (trgovina_id) REFERENCES trgovina(trgovina_id);
-    ALTER TABLE narudzbe ADD FOREIGN KEY (dostavljac_id) REFERENCES dostavljac(id);
+    ALTER TABLE narudzbe ADD FOREIGN KEY (trgovina_id) REFERENCES trgovine(id);
     ALTER TABLE narudzbe ADD FOREIGN KEY (nacin_placanja_id) REFERENCES nacin_placanja(id);
+    ALTER TABLE narudzbe ADD FOREIGN KEY (dostavljac_id) REFERENCES dostavljaci(id); 
     ALTER TABLE narudzbe_artikli ADD FOREIGN KEY (narudzba_id) REFERENCES narudzbe(id);
     ALTER TABLE narudzbe_artikli ADD FOREIGN KEY (artikli_id) REFERENCES artikli(id);
-
-
     
-
 
     
