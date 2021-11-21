@@ -69,4 +69,38 @@ use zavrsnirad --default_character_set=utf8;
     ALTER TABLE narudzbe_artikli ADD FOREIGN KEY (artikli_id) REFERENCES artikli(id);
     
 
-    
+    select * from kupac;
+
+    insert into kupac(ime,prezime,adresa,pbroj,mjesto) values('filip','đunda','vijenac dinare',31000,'osijek');
+
+
+    select * from trgovine;
+
+    insert into trgovine(naziv,email,kontakt_broj,adresa,pbroj,mjesto) 
+    values('interspar','interspar.os@gmail.com',031300500,'svilajska',31000,'osijek');
+
+
+    select * from nacin_placanja;
+
+    insert into nacin_placanja(naziv)
+    values('gotovinsko');
+
+
+    select * from artikli;
+
+    insert into artikli(naziv,opis,cijena)
+    values('coca cola','gazirani napitak',12.99);
+
+
+    select * from dostavljaci;
+
+    insert into dostavljaci(naziv,kontakt_broj,mjesto)
+    values('glovo',0987654321,'osijek');
+
+
+    select * from narudzbe;
+
+    insert into narudzbe(ukupan_iznos,placeno)
+    values(12.99,1)
+
+
