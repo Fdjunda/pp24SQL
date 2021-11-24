@@ -24,7 +24,6 @@ use zavrsnirad --default_character_set=utf8;
     create table narudzbe(
     id int not null primary key auto_increment,
     kupci_id int,
-    trgovina varchar(100),
     nacin_placanja varchar(50),
     placeno boolean);
 
