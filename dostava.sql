@@ -17,7 +17,8 @@ use zavrsnirad --default_character_set=utf8;
     create table artikli(
     id int not null primary key auto_increment,
     naziv varchar(50) not null,
-    opis text not null,
+    jedinicna_mjera varchar(5) not null,
+    opis varchar(225) not null,
     cijena decimal(18,2) not null
     );
         
@@ -43,17 +44,12 @@ use zavrsnirad --default_character_set=utf8;
     
     
 
-    select * from kupci;
-
-    insert into kupci(ime,prezime,adresa,pbroj,mjesto) 
-    values('filip','đunda','vijenac dinare',31000,'osijek');
+    
 
 
+    
 
-    select * from artikli;
-
-    insert into artikli(naziv,opis,cijena)
-    values('coca cola','gazirani napitak',12.99);
+   
 
 
 
