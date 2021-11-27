@@ -40,6 +40,20 @@ use zavrsnirad --default_character_set=utf8;
     ALTER TABLE narudzbe ADD FOREIGN KEY (kupci_id) REFERENCES kupci(id);
     ALTER TABLE narudzbe_artikli ADD FOREIGN KEY (narudzba_id) REFERENCES narudzbe(id);
     ALTER TABLE narudzbe_artikli ADD FOREIGN KEY (artikli_id) REFERENCES artikli(id);
+    
+
+
+    select * from artikli;
+
+    insert into artikli(id,naziv,jedinicna_mjera,opis,cijena) values
+    (null,'Joystick','kom','kontroler za ps4',399.99),
+    (null,'Ps+','kom','pretplata za online igranje',438.00),
+    (null,'Playstation 4','kom','igrajuca konzola',2899.89),
+    (null,'Lan kabal','m','kabal za spajanje',2.89),
+    (null,'VR head set','kom','vr ps4 virtualna stvarnost + 4 igrice',2892.00),
+    (null,'Coca cola','kom','bezalkoholno gazirano pice',12.99);
+
+
    
     
     
