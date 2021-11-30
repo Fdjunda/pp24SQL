@@ -113,6 +113,19 @@ use zavrsnirad --default_character_set=utf8;
     (null,4,6,103.92,8),
     (null,7,3,2700,1);
 
+    select a.naziv, a.opis, a.cijena, a.jedinicna_mjera
+    from artikli a 
+    inner join narudzbe_artikli b on a.id =b.id;
+
+
+    select b.cijena, b.kolicina 
+    from narudzbe_artikli b
+    inner join narudzbe c on b.id =c.id; 
+
+    select d.nacin_placanja, d.placeno
+    from narudzbe d
+    inner join kupci e on d.id= e.id; 
+
    
     
     
